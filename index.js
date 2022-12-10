@@ -65,7 +65,6 @@ clearNode.addEventListener(`click`, function () {
 });
 
 setInterval(checkChanges);
-before = content.innerHTML;
 
 function checkChanges() {
   for (const letter in morse) {
