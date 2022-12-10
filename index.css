@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #212121;
+  color: #fff;
+  flex-direction: column;
+  font-family: "JetBrains Mono";
+  text-align: center;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  background-color: #454532;
+  border: none;
+  color: #fff;
+  transition: background-color .3s;
+  font-family: 'JetBrains Mono';
+}
+
+button:hover {
+  background-color: #353523;
+}
+
+button:active {
+  background-color: #252521;
+}
+
+main {
+  font-size: 30px;
+  background-color: #252521;
+  height:500px;
+}
+
+header {
+  position: absolute;
+  top: 5%;
+}
+
+.hint {
+  width: 300px;
+  font-size: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: absolute;
+  left: 2vw;
+  bottom: 2vw;
+  justify-content: space-between;
+}
+
+.hint div {
+  background-color: #353523;
+}
