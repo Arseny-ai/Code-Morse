@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      background-color: #212121;
+      color: #fff;
+      flex-direction: column;
+      font-family: "JetBrains Mono";
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 50px 0;
+    }
+
+    button {
+      width: 200px;
+      height: 40px;
+      background-color: #454532;
+      border: none;
+      color: #fff;
+      transition: background-color .3s;
+    }
+
+    button:hover {
+      background-color: #353523;
+    }
+
+    button:active {
+      background-color: #252521;
+    }
+
+    main {
+      font-size: 30px;
+    }
+
+    header {
+      position: absolute;
+      top: 10%;
+    }
+
+    .hint {
+      width: 300px;
+      font-size: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: absolute;
+      left: 2vw;
+      bottom: 2vw;
+      justify-content: space-between;
+    }
+
+    .hint div {
+      background-color: #353523;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Code Morse</h1>
+    <nav>
+      <button id="short">•</button>
+      <button id="long">-</button>
+      <button id="enter">Enter</button>
+      <button id="backspace">Backspace</button>
+      <button id="clear">Clear</button>
+    </nav>
+  </header>
+  <div class="hint">
+    <div>A •-</div>
+    <div>B -•••</div>
+    <div>C -•-•</div>
+    <div>D -••</div>
+    <div>E •</div>
+    <div>F ••-•</div>
+    <div>G --•</div>
+    <div>H ••••</div>
+    <div>I ••</div>
+    <div>J •---</div>
+    <div>K -•-</div>
+    <div>L •-••</div>
+    <div>M --</div>
+    <div>N -•</div>
+    <div>O --- </div>
+    <div>P •--•</div>
+    <div>Q --•-</div>
+    <div>R •-•</div>
+    <div>S ••• </div>
+    <div>T - </div>
+    <div>U ••-</div>
+    <div>V •••-</div>
+    <div>W •--</div>
+    <div>X -••- </div>
+    <div>Y -•--</div>
+    <div>Z --••</div>
+    <div>SPACE •••••••</div>
+  </div>
+
+  <main>
+    <p id="main-content"></p>
+  </main>
+
+  <script>
+
+    const morse = {
+      A: '•-', B: '-•••', C: '-•-•', D: '-••', E: '•', F: '••-•', G: '--•',
+      H: '••••', I: '••', J: '•---', K: '-•-', L: '•-••', M: '--', N: '-•',
+      O: '---', P: '•--•', Q: '--•-', R: '•-•', S: '•••', T: '-', U: '••-',
+      V: '•••-', W: '•--', X: '-••-', Y: '-•--', Z: '--••', ' ': '•••••••'
+    }
+
+    const shortNode = document.querySelector(`#short`)
+    const longNode = document.querySelector(`#long`)
+    const enterNode = document.querySelector(`#enter`)
+    const backspaceNode = document.querySelector(`#backspace`)
+    const clearNode = document.querySelector(`#clear`)
+
+    let content = document.querySelector(`#main-content`)
+
+    shortNode.addEventListener(`click`, function () {
+      content.innerHTML += `•`
+    })
+    longNode.addEventListener(`click`, function () {
+      content.innerHTML += `-`
+    })
+    enterNode.addEventListener(`click`, function () {
+      content.innerHTML += ` `
+    })
+    backspaceNode.addEventListener(`click`, function () {
+      content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 1)
+    })
+    clearNode.addEventListener(`click`, function () {
+      content.innerHTML = ``
+    })
+
+    setInterval(checkChanges)
+    before = content.innerHTML
+
+    function checkChanges() {
+      if (content.innerHTML != before) {
+        for (const letter in morse) {
+          const result = content.innerHTML.replace(`${morse[letter]} `, letter)
+          if (content.innerHTML.includes(`${morse[letter]} `)) {
+            if (!(result.includes(`-`) || result.includes(`•`))) {
+              content.innerHTML = content.innerHTML.replace(`${morse[letter]} `, letter)
+            }
+          }
+        }
+      }
+      before = content.innerHTML
+    }
+
+
+  </script>
+</body>
+
+</html>
