@@ -6,21 +6,18 @@
 
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #212121;
+  background-color: #202020;
   color: #fff;
   flex-direction: column;
   font-family: "JetBrains Mono";
-  text-align: center;
 }
 
 button {
-  width: 200px;
   height: 40px;
-  background-color: #454532;
+  background-color: #676742;
   border: none;
   color: #fff;
   transition: background-color .3s;
@@ -28,36 +25,77 @@ button {
 }
 
 button:hover {
-  background-color: #353523;
+  background-color: #73734d;
 }
 
 button:active {
-  background-color: #252521;
+  background-color: #636349;
 }
 
 main {
   font-size: 30px;
-  background-color: #252521;
-  height:500px;
+  background-color: #37373581;
+  width: 70vw;
+  height: 80vh;
+  margin: 1% 0;
+}
+
+main > * {
+  padding: 1%;
 }
 
 header {
-  position: absolute;
-  top: 5%;
+  width: 100%;
+  text-align: center;
+  background-color: #59593c;
+}
+
+p {
+  width: 100%;
+  height: 100%;
+}
+
+.hr {
+  border: none;
+  background-color: #212121;
+  height: 30px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  width: 70%;
+  margin: 1%;
+}
+
+nav button {
+  flex: 1 1;
 }
 
 .hint {
-  width: 300px;
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  position: absolute;
-  left: 2vw;
-  bottom: 2vw;
   justify-content: space-between;
+  align-content: flex-start;
+  align-items: start;
 }
 
 .hint div {
-  background-color: #353523;
+  background-color: #59593c;
+  transition: background-color  .3s;
+}
+
+.hint div:hover {
+  background-color: #73734d;
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 95vw;
+  }
+  nav {
+    width: 95vw;
+  }
 }

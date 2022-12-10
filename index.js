@@ -43,10 +43,16 @@ longNode.addEventListener(`click`, function () {
   content.innerHTML += `-`;
 });
 enterNode.addEventListener(`click`, function () {
-  content.innerHTML += ` `;
+  if (!content.innerHTML.endsWith(` `)) {
+    content.innerHTML += ` `;
+  }
 });
 backspaceNode.addEventListener(`click`, function () {
-  content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 1);
+  if (content.innerHTML.endsWith(` `)) {
+    content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 2);
+  } else {
+    content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 1);
+  }
 });
 clearNode.addEventListener(`click`, function () {
   content.innerHTML = ``;
