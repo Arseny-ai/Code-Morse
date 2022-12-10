@@ -49,9 +49,15 @@ enterNode.addEventListener(`click`, function () {
 });
 backspaceNode.addEventListener(`click`, function () {
   if (content.innerHTML.endsWith(` `)) {
-    content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 2);
+    content.innerHTML = content.innerHTML.slice(
+      0,
+      content.innerHTML.length - 2
+    );
   } else {
-    content.innerHTML = content.innerHTML.slice(0, content.innerHTML.length - 1);
+    content.innerHTML = content.innerHTML.slice(
+      0,
+      content.innerHTML.length - 1
+    );
   }
 });
 clearNode.addEventListener(`click`, function () {
@@ -62,18 +68,15 @@ setInterval(checkChanges);
 before = content.innerHTML;
 
 function checkChanges() {
-  if (content.innerHTML != before) {
-    for (const letter in morse) {
-      const result = content.innerHTML.replace(`${morse[letter]} `, letter);
-      if (content.innerHTML.includes(`${morse[letter]} `)) {
-        if (!(result.includes(`-`) || result.includes(`•`))) {
-          content.innerHTML = content.innerHTML.replace(
-            `${morse[letter]} `,
-            letter
-          );
-        }
+  for (const letter in morse) {
+    const result = content.innerHTML.replace(`${morse[letter]} `, letter);
+    if (content.innerHTML.includes(`${morse[letter]} `)) {
+      if (!(result.includes(`-`) || result.includes(`•`))) {
+        content.innerHTML = content.innerHTML.replace(
+          `${morse[letter]} `,
+          letter
+        );
       }
     }
   }
-  before = content.innerHTML;
 }
