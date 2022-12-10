@@ -14,7 +14,7 @@ body {
   background-color: #202020;
   color: #fff;
   flex-direction: column;
-  font-family: "JetBrains Mono";
+  font-family: "JetBrains Mono", monospace;
 }
 
 button {
@@ -23,7 +23,7 @@ button {
   border: none;
   color: #fff;
   transition: background-color .3s;
-  font-family: 'JetBrains Mono';
+  font-family: 'JetBrains Mono', monospace;
 }
 
 button:hover {
